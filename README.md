@@ -65,10 +65,17 @@ Specify the license under which this tool is available. Common choices include M
 - dask
 - xarray
 - pandas
+- poetry
 ### docker
 - compose
 - dockerfile
 - cli
+### azure
+- cli
+- aks
+### kubernetes
+- k9s
+- kubectl
 ### bash
 - bash (general)
 - sed
@@ -76,6 +83,8 @@ Specify the license under which this tool is available. Common choices include M
 - grep
 ### misc
 - yaml
+- sphinx
+- rclone
 - markdown
 - gitlab-ci
 - git
