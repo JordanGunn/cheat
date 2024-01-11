@@ -12,24 +12,7 @@
    git clone https://github.com/yourusername/cheat.git
    ```
 
-2. **Set Up the Cheat Directory**
-
-   Create a directory named `cheat` in your home directory:
-
-   ```bash
-   mkdir ~/cheat
-   ```
-
-   You can add your cheat sheets (text files) to this directory. If you want to categorize them, you can create subdirectories.
-
-3. **Add Cheat Sheets**
-
-   Add your cheat sheets to the `~/cheat` directory. For example:
-
-   - General cheat sheets can be directly under `~/cheat`, like `~/cheat/git`.
-   - Categorized cheat sheets can be in subdirectories, like `~/cheat/docker/docker-compose`.
-
-4. **Install the Script**
+2. **Install the Script**
 
    Place the `cheat` script in a directory that's in your `PATH`, or update your `PATH` to include the directory where the script is located.
 
@@ -38,6 +21,13 @@
    ```bash
    chmod +x install.sh && ./install.sh
    ```
+
+3. **Adding more Cheat Sheets**
+
+   Add your cheat sheets to the `~/cheat` directory. For example:
+
+   - General cheat sheets can be directly under `~/cheat`, like `~/cheat/git`.
+   - Categorized cheat sheets can be in subdirectories, like `~/cheat/docker/docker-compose`.
 
 ## Usage
 
@@ -66,3 +56,27 @@ Contributions to the `cheat` utility are welcome. Feel free to fork the reposito
 ## License
 
 Specify the license under which this tool is available. Common choices include MIT, GPL, Apache, etc.
+
+## Current list of cheat sheets.
+**python**
+- gdal
+- setuptools
+- numpy
+- dask
+- xarray
+- pandas
+**docker**
+- compose
+- dockerfile
+- cli
+**bash**
+- bash (general)
+- sed
+- awk
+- grep
+**misc**
+- yaml
+- markdown
+- gitlab-ci
+- git
+- http
