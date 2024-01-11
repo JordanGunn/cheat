@@ -1,0 +1,58 @@
+# rclone Cheat Sheet
+
+# Basic Configuration
+rclone config  # Interactive setup of remote cloud storage
+
+# List Remotes
+rclone listremotes  # List all the configured remotes
+
+# Copying Files and Directories
+rclone copy source:path dest:path  # Copy files from source to dest
+rclone copyto source:path dest:path  # Copy files from source to dest with specific names
+
+# Syncing Files and Directories
+rclone sync source:path dest:path  # Sync source to dest, changing dest only
+
+# Moving Files and Directories
+rclone move source:path dest:path  # Move files from source to dest
+
+# Deleting Files and Directories
+rclone delete remote:path  # Remove the contents of path
+rclone purge remote:path  # Remove the path and its contents
+
+# Listing Files
+rclone ls remote:path  # List all the files in path
+rclone lsd remote:path  # List all directories/containers/buckets in path
+rclone lsl remote:path  # List all the files with size and modification time
+
+# Checking Files
+rclone check source:path dest:path  # Check if the files in source and dest are identical
+
+# Mounting (Linux/macOS)
+rclone mount remote:path /path/to/mountpoint  # Mount the remote as a filesystem
+
+# Serving (HTTP, WebDAV)
+rclone serve http remote:path  # Serve remote over HTTP
+rclone serve webdav remote:path  # Serve remote over WebDAV
+
+# Filtering Files
+rclone copy --include "*.txt" source:path dest:path  # Include only .txt files
+rclone copy --exclude "*.bak" source:path dest:path  # Exclude .bak files
+rclone copy --filter-from filter-file.txt source:path dest:path  # Use a filter file
+
+# Bandwidth Limiting
+rclone copy --bwlimit 1M source:path dest:path  # Limit bandwidth to 1MByte/s
+
+# Dry Run (No Changes)
+rclone copy --dry-run source:path dest:path  # Perform a trial run with no changes made
+
+# Verbose Output
+rclone copy --verbose source:path dest:path  # Print detailed logs of the operation
+
+# Notes:
+# - Replace 'remote:path' with the name of your remote configuration and the path on the remote.
+# - Replace 'source:path' and 'dest:path' with your source and destination paths.
+# - Ensure you have the necessary permissions for the operations you perform.
+# - Check the rclone documentation for advanced configurations and options.
+
+# This cheat sheet covers basic rclone commands. For more detailed information, refer to the official rclone documentation.

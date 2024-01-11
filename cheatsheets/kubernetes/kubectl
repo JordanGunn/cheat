@@ -1,0 +1,68 @@
+# kubectl Cheat Sheet
+
+# General Syntax
+kubectl [command] [type] [name] [flags]
+
+# Get commands with basic output
+kubectl get nodes                      # List all nodes in the cluster
+kubectl get pods                       # List all pods in all namespaces
+kubectl get pods -n namespace          # List all pods in the specified namespace
+kubectl get pod pod_name -o yaml       # Get a pod's YAML
+
+# Describe commands with verbose output
+kubectl describe nodes node_name
+kubectl describe pods pod_name
+
+# Creating and Deleting Resources
+kubectl apply -f config.yaml           # Create resource(s) specified in a YAML file
+kubectl delete -f config.yaml          # Delete resource(s) specified in a YAML file
+kubectl delete pod pod_name            # Delete a specific pod
+
+# Executing Commands in Pods
+kubectl exec pod_name -- ls            # Execute command in existing pod
+kubectl exec -ti pod_name -- bash      # Start shell session inside a pod
+
+# Logs
+kubectl logs pod_name                  # Dump pod logs (stdout)
+kubectl logs -f pod_name               # Stream pod logs (stdout)
+
+# Interacting with Nodes and Cluster
+kubectl cordon node_name               # Mark node as unschedulable
+kubectl drain node_name                # Drain node in preparation for maintenance
+kubectl uncordon node_name             # Mark node as schedulable
+kubectl top node node_name             # Show metrics for a given node
+
+# Interacting with Namespaces
+kubectl create namespace name          # Create a new namespace
+kubectl get namespaces                 # List all namespaces
+
+# Config Context
+kubectl config view                    # Show merged kubeconfig settings
+kubectl config current-context         # Display the current context
+kubectl config use-context context_name  # Set the default context
+
+# Port Forwarding
+kubectl port-forward pod_name [LOCAL_PORT:]REMOTE_PORT
+
+# Labeling Objects
+kubectl label pods pod_name key=value  # Add a new label to a pod
+kubectl annotate pods pod_name key=value # Add a new annotation to a pod
+
+# Scaling
+kubectl scale --replicas=3 rs/foo      # Scale a replicaset named 'foo' to 3
+kubectl scale --replicas=3 -f foo.yaml # Scale a resource specified in "foo.yaml" to 3
+
+# Rollout
+kubectl rollout status deployment/foo  # Check the status of the rollout
+kubectl rollout undo deployment/foo    # Rollback to the previous deployment
+
+# Autoscale
+kubectl autoscale deployment foo --min=2 --max=10
+
+# Notes:
+# - Replace 'type' and 'name' with the resource type (e.g., 'pod', 'deployment') and name of the resource.
+# - Resource types are case-sensitive and can be pluralized (e.g., 'nodes' for all nodes).
+# - Flags are used to provide additional options or specify configuration.
+# - Make sure your KUBECONFIG is set correctly to access your cluster.
+
+# This cheat sheet covers basic kubectl commands and use cases. For more detailed information, refer to the official Kubernetes documentation.

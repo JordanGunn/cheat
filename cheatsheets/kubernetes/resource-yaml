@@ -1,0 +1,116 @@
+# Kubernetes YAML Resource Files Cheat Sheet
+
+# Pod: Simplest unit, a single container
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-name
+spec:
+  containers:
+  - name: container-name
+    image: image-name
+
+# Deployment: Manage a set of identical pods (with replicas)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-name
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-name
+  template:
+    metadata:
+      labels:
+        app: app-name
+    spec:
+      containers:
+      - name: container-name
+        image: image-name
+
+# Service: Expose an application running on a set of Pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-name
+spec:
+  selector:
+    app: app-name
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+
+# ConfigMap: Store non-confidential data in key-value pairs
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-name
+data:
+  key1: value1
+  key2: value2
+
+# PersistentVolume: Storage resource in a cluster
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-name
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  nfs:
+    path: /path/to/dir
+    server: nfs-server-ip
+
+# PersistentVolumeClaim: Request for storage by a user
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-name
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+# Ingress: Manage external access to services
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-name
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-name
+            port:
+              number: 80
+
+# Secret: Store and manage sensitive information
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-name
+type: Opaque
+data:
+  username: base64-encoded-username
+  password: base64-encoded-password
+
+# Notes:
+# - Replace placeholders like `pod-name`, `deployment-name`, `image-name`, etc., with your actual resource details.
+# - Ensure correct indentation as YAML is sensitive to whitespace.
+# - Apply these configurations with `kubectl apply -f filename.yaml`.
+# - Use `kubectl get`, `describe`, and `delete` commands to manage these resources.
+
+# This cheat sheet covers basic Kubernetes resources in YAML format. For more detailed information and advanced configurations, refer to the official Kubernetes documentation.

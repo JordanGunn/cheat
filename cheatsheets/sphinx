@@ -1,0 +1,66 @@
+# Sphinx Cheat Sheet
+
+# Installation
+pip install sphinx  # Install Sphinx
+
+# Setting Up a Documentation Project
+sphinx-quickstart  # Interactive tool to set up a project
+
+# Directory Structure
+# docs/
+# ├── build/         # Compiled documentation
+# ├── make.bat       # Windows build script
+# ├── Makefile       # Unix/macOS build script
+# └── source/        # .rst source files, static files, templates, etc.
+
+# Basic Configuration (conf.py)
+# Located in the source/ directory. Configure project settings including:
+# - Project title, author, version
+# - Extensions (e.g., sphinx.ext.autodoc for docstrings)
+# - HTML theme (e.g., 'alabaster', 'sphinx_rtd_theme')
+
+# Creating Documentation Source Files
+# Use reStructuredText (.rst) or Markdown (.md) for writing documentation.
+
+# Building the Documentation
+make html       # Build HTML documentation
+make latexpdf   # Build PDF documentation via LaTeX
+make text       # Build plain text documentation
+make help       # List of all make targets
+
+# Sphinx Extensions
+# Add extensions to conf.py, e.g., 'sphinx.ext.autodoc' for automatic docstring extraction.
+
+# Auto-generating Documentation from Docstrings
+sphinx-apidoc -o /path/to/source /path/to/module  # Generate .rst from Python modules
+
+# Cross-referencing Python Objects
+# Use :class:, :func:, etc., to link to other documented Python objects.
+
+# Theming
+# Change the HTML theme in conf.py, e.g., html_theme = 'sphinx_rtd_theme'
+
+# Hosting Documentation
+# Commonly hosted on platforms like Read the Docs or GitHub Pages.
+
+# Example reStructuredText
+"""
+My Project Documentation
+========================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   introduction
+   installation
+   usage
+"""
+
+# Notes:
+# - Sphinx is highly customizable and extendable with numerous configuration options and extensions.
+# - Good practice to separate source files: introduction.rst, installation.rst, usage.rst.
+# - Sphinx is not limited to Python projects but is widely used in the Python community.
+
+# This cheat sheet covers basic Sphinx usage. For more detailed information, refer to the official Sphinx documentation.

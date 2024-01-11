@@ -1,0 +1,69 @@
+# Azure Kubernetes Service (AKS) Cheat Sheet
+
+# Installing Azure CLI and AKS CLI
+az aks install-cli  # Install the Kubernetes CLI (kubectl)
+
+# Creating an AKS Cluster
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --enable-addons monitoring \
+    --generate-ssh-keys  # Create an AKS cluster
+
+# Getting Credentials for AKS Cluster
+az aks get-credentials \
+    --resource-group myResourceGroup \
+    --name myAKSCluster  # Get credentials to interact with the AKS cluster
+
+# Listing AKS Clusters
+az aks list \
+    --output table  # List all AKS clusters in the default output format
+
+# Scaling an AKS Cluster
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5  # Scale the AKS cluster to 5 nodes
+
+# Upgrading an AKS Cluster
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version 1.20.7  # Upgrade the AKS cluster to a specific Kubernetes version
+
+# Deleting an AKS Cluster
+az aks delete \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --yes --no-wait  # Delete an AKS cluster
+
+# Kubernetes CLI (kubectl) Commands
+
+# Get Nodes
+kubectl get nodes  # List all nodes in the AKS cluster
+
+# Get Deployments
+kubectl get deployments  # List all deployments
+
+# Get Pods
+kubectl get pods  # List all pods in the AKS cluster
+
+# Create Resources
+kubectl apply -f filename.yaml  # Create resources defined in a YAML file
+
+# Delete Resources
+kubectl delete -f filename.yaml  # Delete resources defined in a YAML file
+
+# Access the Kubernetes Dashboard
+az aks browse \
+    --resource-group myResourceGroup \
+    --name myAKSCluster  # Open the Kubernetes dashboard for your AKS cluster
+
+# Notes:
+# - Replace placeholders like 'myResourceGroup', 'myAKSCluster' with your actual resource group and AKS cluster names.
+# - Ensure you have the right permissions and the Azure CLI installed.
+# - AKS management tasks like scaling, upgrading, and monitoring are typically done via the Azure CLI.
+# - Direct Kubernetes operations such as deploying apps, managing workloads, and inspecting resources are done using kubectl.
+
+# This cheat sheet covers basic AKS and kubectl commands. For more detailed information, refer to the official Azure Kubernetes Service documentation.

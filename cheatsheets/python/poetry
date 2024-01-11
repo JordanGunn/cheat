@@ -1,0 +1,60 @@
+# Poetry Cheat Sheet
+
+# Installation
+# Install Poetry (refer to the official documentation for the latest method):
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+
+# Basic Configuration
+poetry config --list  # List current configuration
+poetry config key value  # Set a configuration value
+
+# Starting a New Project
+poetry new my_project  # Create a new project in a new directory
+poetry init  # Initialize poetry in an existing project
+
+# Adding Dependencies
+poetry add package_name  # Add a package to the project dependencies
+poetry add package_name --dev  # Add a package to the development dependencies
+
+# Installing Dependencies
+poetry install  # Install all dependencies for the project
+
+# Updating Dependencies
+poetry update  # Update all dependencies to their latest versions
+poetry update package_name  # Update a specific package
+
+# Removing Dependencies
+poetry remove package_name  # Remove a package from the project dependencies
+
+# Managing Python Versions
+poetry env use python3.x  # Create a virtual environment with a specific Python version
+
+# Building the Project
+poetry build  # Build the project for distribution
+
+# Publishing the Project
+poetry publish  # Publish the project to PyPI
+
+# Running Scripts
+poetry run python script.py  # Run a script within the poetry virtual environment
+
+# Running the Shell
+poetry shell  # Spawn a shell within the virtual environment
+
+# Show Information
+poetry show  # Show information about installed packages
+poetry show --tree  # Display dependency tree
+
+# Check for Security Vulnerabilities and Updates
+poetry check  # Checks the validity of the pyproject.toml file
+poetry self update  # Update poetry to the latest version
+
+# Exporting Dependencies
+poetry export -f requirements.txt --output requirements.txt  # Export dependencies to requirements.txt
+
+# Notes:
+# - The pyproject.toml file is used to manage project metadata and dependencies.
+# - Always activate the virtual environment (or use `poetry run`) to work within the project's context.
+# - Use semantic versioning to specify dependency versions accurately.
+
+# This cheat sheet covers basic Poetry commands. For more detailed information, refer to the official Poetry documentation.

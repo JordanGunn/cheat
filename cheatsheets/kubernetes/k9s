@@ -1,0 +1,55 @@
+# k9s Cheat Sheet
+
+# Starting k9s
+k9s  # Launch k9s interface
+
+# Navigation
+:ns            # List namespaces
+:po            # List pods in the current namespace
+:deploy        # List deployments in the current namespace
+:svc           # List services
+:node          # List nodes
+:configmap     # List configmaps
+
+# Filtering Resources
+/keyword       # Filter displayed resources by keyword
+
+# Viewing Resource Details
+Enter          # Show details for the selected resource
+d              # Describe resource (detailed view)
+
+# Editing Resources
+e              # Edit the selected resource in the default editor
+
+# Viewing Resource Logs
+l              # View logs for the selected resource
+Shift-L        # View logs for a previous instance of the resource
+
+# Port Forwarding
+Shift-F        # Set up port forwarding
+
+# Shell into a Pod
+s              # Shell into the selected pod
+
+# Deleting Resources
+Ctrl-D         # Delete the selected resource (with confirmation)
+
+# Refreshing Views
+Ctrl-R         # Refresh the current view
+
+# Command Mode
+:              # Enter command mode, type any Kubernetes command
+
+# Exiting k9s
+Ctrl-C or q    # Exit k9s
+
+# Aliases
+alias k='kubectl'  # Set up a kubectl alias for convenience
+
+# Notes:
+- k9s continuously watches for changes in Kubernetes resources and updates in real-time.
+- It automatically adapts to the current namespace context.
+- Navigating between different views and resources is done with keyboard shortcuts.
+- Make sure your KUBECONFIG is set correctly to access your cluster.
+
+# This cheat sheet covers basic k9s commands and shortcuts. For more detailed information, refer to the official k9s documentation.

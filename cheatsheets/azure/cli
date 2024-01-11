@@ -1,0 +1,76 @@
+# Azure CLI Cheat Sheet
+
+# Login to Azure
+az login  # Login to your Azure account
+
+# List Azure Subscriptions
+az account list --output table  # List all subscriptions in table format
+
+# Set Current Azure Subscription
+az account set --subscription "Subscription Name"  # Set the current subscription
+
+# Create a Resource Group
+az group create --name MyResourceGroup --location eastus  # Create a resource group
+
+# Create a Virtual Machine
+az vm create \
+    --resource-group MyResourceGroup \
+    --name MyVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys  # Create a new VM
+
+# Start a Virtual Machine
+az vm start --resource-group MyResourceGroup --name MyVM  # Start a VM
+
+# Stop a Virtual Machine
+az vm stop --resource-group MyResourceGroup --name MyVM  # Stop a VM
+
+# List Virtual Machines
+az vm list --output table  # List all VMs in table format
+
+# Create a Storage Account
+az storage account create \
+    --name mystorageaccount \
+    --resource-group MyResourceGroup \
+    --location eastus \
+    --sku Standard_LRS  # Create a storage account
+
+# List Storage Accounts
+az storage account list --output table  # List storage accounts
+
+# Create a Blob Container
+az storage container create \
+    --account-name mystorageaccount \
+    --name mycontainer  # Create a blob container
+
+# Upload File to a Blob Container
+az storage blob upload \
+    --account-name mystorageaccount \
+    --container-name mycontainer \
+    --name myblob \
+    --file /path/to/file  # Upload a file
+
+# List Blobs in a Container
+az storage blob list \
+    --account-name mystorageaccount \
+    --container-name mycontainer \
+    --output table  # List blobs
+
+# Delete a Resource Group
+az group delete --name MyResourceGroup  # Delete a resource group
+
+# Azure CLI Interactive Mode
+az interactive  # Start the interactive mode
+
+# Getting Help
+az --help  # Get help on Azure CLI
+az vm --help  # Get help on VM commands
+
+# Notes:
+# - Replace placeholders (like MyResourceGroup, MyVM, mystorageaccount) with your actual resource names.
+# - The Azure CLI can be used to manage most aspects of Azure, but the exact commands will depend on the services you're using.
+# - Output formatting can be changed using the --output flag (table, json, yaml, etc.).
+# - Ensure you have the necessary permissions for the operations you perform.
+
+# This cheat sheet covers basic Azure CLI commands. For more detailed information, refer to the official Azure CLI documentation.
