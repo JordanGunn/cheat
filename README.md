@@ -21,8 +21,13 @@
    ```bash
    chmod +x install.sh && ./install.sh
    ```
+## Updating
 
-3. **Adding more Cheat Sheets**
+  ```bash
+  chmod +x update.sh && ./update.sh
+  ```
+
+## Adding more cheat sheets
 
    Add your cheat sheets to the `~/cheat` directory. For example:
 
