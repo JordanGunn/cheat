@@ -1,24 +1,27 @@
 # vars
-export CHEATDIR="~/.cheat"
-export SCRIPTDIR="~/.scripts"
-export ZSHRC="~/.zshrc"
-export BASHRC="~/.bashrc"
+export CHEATDIR="$HOME/.cheat"
+export SCRIPTDIR="$HOME/.scripts"
+export ZSHRC="$HOME/.zshrc"
+export BASHRC="$HOME/.bashrc"
 
-# update the codebase
-git pull origin master
-
-# make the dir for cheatsheets
-mkdir -p ${CHEATDIR}
-mkdir -p ${SCRIPTDIR}
+# get the name of the current script
+export SCRIPTNAME = $(basename "$0")
 
 # copy the cheatsheets into the dir
-cp cheatsheets/* ${CHEATDIR}/
+mkdir -p ${CHEATDIR}
+cp -r cheatsheets/* ${CHEATDIR}/
 
-# copy the cheat script
-cp ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
+if [ "$SCRIPTNAME" = "install.sh" ]; then
 
-# Add path to cheat
-PATHNEW="export PATH=${SCRIPTDIR}:${PATH}"
-echo ${PATHNEW} >> ${ZSHRC}
-echo ${PATHNEW} >> ${BASHRC}
+    # make the dir for cheatsheets
+    mkdir -p ${SCRIPTDIR}
+
+    # copy the cheat script
+    cp ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
+
+    # Add path to cheat
+    PATHNEW="export PATH=${SCRIPTDIR}:${PATH}"
+    echo ${PATHNEW} >> ${ZSHRC}
+    echo ${PATHNEW} >> ${BASHRC}
+fi
 
