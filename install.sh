@@ -8,14 +8,17 @@ export BASHRC="~/.bashrc"
 git pull origin master
 
 # make the dir for cheatsheets
-mkdir -p $CHEATDIR
-mkdir -p $SCRIPTDIR
+mkdir -p ${CHEATDIR}
+mkdir -p ${SCRIPTDIR}
 
 # copy the cheatsheets into the dir
-cp cheatsheets/* $CHEATDIR/
+cp cheatsheets/* ${CHEATDIR}/
 
 # copy the cheat script
-cp ./cheat $SCRIPTDIR && chmod a+x $SCRIPTDIR/cheat
+cp ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
 
 # Add path to cheat
-export PATH=$SCRIPTDIR:$PATH
+PATHNEW="export PATH=${SCRIPTDIR}:${PATH}"
+echo ${PATHNEW} >> ${ZSHRC}
+echo ${PATHNEW} >> ${BASHRC}
+
