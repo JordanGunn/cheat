@@ -58,23 +58,23 @@ Contributions to the `cheat` utility are welcome. Feel free to fork the reposito
 Specify the license under which this tool is available. Common choices include MIT, GPL, Apache, etc.
 
 ## Current list of cheat sheets.
-**python**
+### python
 - gdal
 - setuptools
 - numpy
 - dask
 - xarray
 - pandas
-**docker**
+### docker
 - compose
 - dockerfile
 - cli
-**bash**
+### bash
 - bash (general)
 - sed
 - awk
 - grep
-**misc**
+### misc
 - yaml
 - markdown
 - gitlab-ci
