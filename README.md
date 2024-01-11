@@ -23,6 +23,8 @@
    ```
 ## Updating
 
+  Run the update script:
+
   ```bash
   chmod +x update.sh && ./update.sh
   ```
