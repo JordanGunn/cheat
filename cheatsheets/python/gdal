@@ -1,0 +1,68 @@
+# GDAL Python Bindings Cheat Sheet
+
+# Import GDAL and OGR modules
+from osgeo import gdal, ogr
+
+# General GDAL Configuration
+gdal.UseExceptions()  # Enable exceptions
+gdal.AllRegister()    # Register all drivers
+
+# Reading Raster Data
+dataset = gdal.Open('path/to/raster/file', gdal.GA_ReadOnly)
+band = dataset.GetRasterBand(1)         # Get a specific band
+data = band.ReadAsArray()               # Read data into a NumPy array
+
+# Getting Raster Metadata
+geotransform = dataset.GetGeoTransform()
+projection = dataset.GetProjection()
+xSize = dataset.RasterXSize
+ySize = dataset.RasterYSize
+
+# Writing Raster Data
+driver = gdal.GetDriverByName('GTiff')
+out_dataset = driver.Create('new_file.tif', xSize, ySize, bands=1, eType=gdal.GDT_Float32)
+out_band = out_dataset.GetRasterBand(1)
+out_band.WriteArray(data)
+
+# Setting Geotransformation and Projection
+out_dataset.SetGeoTransform(geotransform)
+out_dataset.SetProjection(projection)
+
+# Close the dataset
+dataset = None
+out_dataset = None
+
+# Reading Vector Data
+dataSource = ogr.Open('path/to/vector/file', gdal.GA_ReadOnly)
+layer = dataSource.GetLayerByIndex(0)    # Get the first layer
+for feature in layer:
+    geometry = feature.GetGeometryRef()  # Access geometry
+
+# Writing Vector Data
+driver = ogr.GetDriverByName('ESRI Shapefile')
+out_dataSource = driver.CreateDataSource('new_vector.shp')
+out_layer = out_dataSource.CreateLayer('layer', geom_type=ogr.wkbPoint)
+featureDefn = out_layer.GetLayerDefn()
+feature = ogr.Feature(featureDefn)
+feature.SetGeometry(geometry)
+out_layer.CreateFeature(feature)
+
+# Close the data source
+dataSource = None
+out_dataSource = None
+
+# Coordinate Transformation
+source_sr = ogr.osr.SpatialReference()
+source_sr.ImportFromEPSG(4326)  # WGS84
+target_sr = ogr.osr.SpatialReference()
+target_sr.ImportFromEPSG(3857)  # Web Mercator
+transform = ogr.osr.CoordinateTransformation(source_sr, target_sr)
+geometry.Transform(transform)
+
+# Notes:
+# - GDAL is used for raster operations, while OGR is used for vector operations.
+# - The GDAL/OGR Python bindings allow for direct manipulation of geospatial data.
+# - Proper setup of the geospatial context (projection, coordinate systems) is crucial for spatial data processing.
+# - Always close datasets and data sources to ensure data is written and resources are released.
+
+# This cheat sheet provides a basic overview of the GDAL Python bindings. For more detailed information and advanced operations, consult the GDAL/OGR documentation.

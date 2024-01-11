@@ -1,0 +1,119 @@
+# GitLab CI/CD Cheat Sheet
+
+# .gitlab-ci.yml
+# The main configuration file for GitLab CI/CD. Place this file in the root of your repository.
+
+# Basic Structure
+stages:
+  - build
+  - test
+  - deploy
+
+# Job Definition
+build_job:
+  stage: build
+  script:
+    - echo "Building the project..."
+    - build_command
+
+# Using Docker Images
+test_job:
+  stage: test
+  image: python:3.9
+  script:
+    - echo "Running tests..."
+    - test_command
+
+# Only/Except Policies
+deploy_job:
+  stage: deploy
+  script:
+    - deploy_command
+  only:
+    - master
+  except:
+    - develop
+
+# Variables
+variables:
+  TEST_VAR: "value"
+
+build_job:
+  stage: build
+  script:
+    - echo $TEST_VAR
+
+# Artifacts
+test_job:
+  stage: test
+  script:
+    - test_command
+  artifacts:
+    paths:
+      - output/
+
+# Caching
+build_job:
+  stage: build
+  script:
+    - build_command
+  cache:
+    paths:
+      - .cache/
+
+# Dependencies
+deploy_job:
+  stage: deploy
+  script:
+    - deploy_command
+  dependencies:
+    - build_job
+    - test_job
+
+# Services
+test_job:
+  stage: test
+  services:
+    - postgres:latest
+  script:
+    - test_command
+
+# Before and After Scripts
+before_script:
+  - global_setup_command
+
+after_script:
+  - global_teardown_command
+
+build_job:
+  stage: build
+  script:
+    - build_command
+
+# Manual Jobs
+deploy_job:
+  stage: deploy
+  script:
+    - deploy_command
+  when: manual
+
+# Environment
+deploy_job:
+  stage: deploy
+  environment:
+    name: production
+    url: https://example.com
+  script:
+    - deploy_command
+
+# Notes:
+# - Stages define the order of execution.
+# - Jobs are the tasks that are executed in each stage.
+# - The 'script' keyword is used to define the commands that the job will execute.
+# - Use 'only' and 'except' to control when jobs are run.
+# - Artifacts are files created by jobs that are passed to later stages.
+# - Cache is used to store files between jobs and runs.
+# - Services are used for running additional Docker containers.
+# - Manual jobs are triggered manually by a user.
+
+# This cheat sheet covers basic GitLab CI/CD syntax and concepts. For more detailed information, refer to the official GitLab CI/CD documentation.

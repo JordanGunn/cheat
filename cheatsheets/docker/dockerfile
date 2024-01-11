@@ -1,0 +1,105 @@
+# Dockerfile Scripting Cheat Sheet
+
+# Comment
+# Use # to add comments in a Dockerfile.
+
+# FROM
+# Sets the base image for subsequent instructions.
+FROM <image>[:<tag> | @<digest>]
+
+# Example: Start from the latest Ubuntu image
+FROM ubuntu:latest
+
+# LABEL
+# Adds metadata to an image as key-value pairs.
+LABEL <key>=<value> <key>=<value> ...
+
+# Example: Label with version and maintainer
+LABEL version="1.0" maintainer="name@example.com"
+
+# ENV
+# Sets environment variables.
+ENV <key>=<value> ...
+
+# Example: Set an environment variable
+ENV MY_PATH /usr/myapp
+
+# RUN
+# Executes commands in a new layer on top of the current image and commits the results.
+RUN <command>
+
+# Example: Install a package using RUN
+RUN apt-get update && apt-get install -y python3
+
+# COPY
+# Copies files and directories from the host to the container's filesystem at the specified path.
+COPY <src>... <dest>
+
+# Example: Copy a local file to the container
+COPY ./localfile.txt /container/path/localfile.txt
+
+# ADD
+# Similar to COPY, but can handle remote URLs and auto-extract compressed files.
+ADD <src>... <dest>
+
+# Example: Add a file from a URL
+ADD https://example.com/big.tar.gz /usr/src/
+
+# CMD
+# Provides defaults for an executing container. There can only be one CMD instruction in a Dockerfile.
+CMD ["executable","param1","param2"]
+
+# Example: Default command to execute
+CMD ["echo", "Hello world"]
+
+# ENTRYPOINT
+# Allows you to configure a container that will run as an executable.
+ENTRYPOINT ["executable", "param1", "param2"]
+
+# Example: Entry point for a Python application
+ENTRYPOINT ["python3", "/usr/src/myapp/app.py"]
+
+# EXPOSE
+# Informs Docker that the container listens on the specified network ports at runtime.
+EXPOSE <port> [<port>/<protocol>...]
+
+# Example: Expose port 80
+EXPOSE 80
+
+# VOLUME
+# Creates a mount point and marks it as holding externally mounted volumes from native host or other containers.
+VOLUME ["/data"]
+
+# Example: Define a volume
+VOLUME /myvol
+
+# USER
+# Sets the user name or UID to use when running the image.
+USER <user>[:<group>]
+
+# Example: Switch to a user
+USER myuser
+
+# WORKDIR
+# Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it.
+WORKDIR /path/to/workdir
+
+# Example: Set working directory
+WORKDIR /usr/src/app
+
+# HEALTHCHECK
+# Tells Docker how to test a container to check that it is still working.
+HEALTHCHECK [OPTIONS] CMD command
+
+# Example: Healthcheck
+HEALTHCHECK CMD curl -f http://localhost/ || exit 1
+
+# ONBUILD
+# Adds a trigger instruction to be executed at a later time, when the image is used as the base for another build.
+ONBUILD <INSTRUCTION>
+
+# Example: Onbuild trigger
+ONBUILD ADD . /app/src
+
+# Note: This cheat sheet provides an overview of the common Dockerfile instructions.
+# For a full list of instructions and their options, refer to the official Docker documentation.

@@ -1,0 +1,83 @@
+# NumPy Cheat Sheet
+
+# Import NumPy
+import numpy as np
+
+# Creating Arrays
+# Basic array creation methods.
+
+np.array([1, 2, 3])                # Create a simple array
+np.zeros(3)                        # Create an array filled with zeros
+np.ones(3)                         # Create an array filled with ones
+np.empty(3)                        # Create an uninitialized array
+np.arange(5)                       # Create an array with a range of elements
+np.linspace(0, 1, 5)               # Create an array with evenly spaced values
+np.eye(3)                          # Create an identity matrix
+
+# Array Operations
+# Basic arithmetic and matrix operations.
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+a + b                              # Element-wise addition
+a - b                              # Element-wise subtraction
+a * b                              # Element-wise multiplication
+a / b                              # Element-wise division
+a.dot(b)                           # Dot product
+np.cross(a, b)                     # Cross product
+
+# Array Attributes
+# Basic properties of arrays.
+
+a.shape                            # Array dimensions
+a.dtype                            # Data type of array elements
+a.ndim                             # Number of array dimensions
+a.size                             # Total number of elements
+a.itemsize                         # Size in bytes of each element
+
+# Indexing and Slicing
+# Access elements and subarrays.
+
+a[0]                               # First element
+a[:2]                              # Subarray with first two elements
+a[-1]                              # Last element
+a[0:2]                             # Elements from index 0 to 1
+a[a > 2]                           # Boolean indexing
+
+# Reshaping and Transposing
+# Change the shape and layout of arrays.
+
+a.reshape(3, 1)                    # Reshape to a different size
+a.T                                # Transpose the array
+
+# Statistical Operations
+# Common statistical calculations.
+
+a.sum()                            # Sum of all elements
+a.mean()                           # Mean of all elements
+a.std()                            # Standard deviation
+a.var()                            # Variance
+a.min()                            # Minimum value
+a.max()                            # Maximum value
+
+# Linear Algebra
+# Linear algebra operations and matrix transformations.
+
+np.linalg.inv(a)                   # Inverse of a matrix
+np.linalg.det(a)                   # Determinant of a matrix
+np.linalg.eig(a)                   # Eigenvalues and eigenvectors
+
+# Random Numbers
+# Generate random numbers and data.
+
+np.random.random(size=2)           # Random values in a given shape
+np.random.normal(0, 1, size=2)     # Normal distribution
+np.random.randint(0, 10, size=2)   # Random integers
+
+# Notes:
+# - NumPy arrays are faster and more compact than Python lists.
+# - An array's size is immutable; operations like append, extend, and remove are not available.
+# - NumPy is foundational for many Python-based data science libraries.
+
+# For more information and advanced usage, refer to the official NumPy documentation.

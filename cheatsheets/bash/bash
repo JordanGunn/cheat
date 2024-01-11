@@ -1,0 +1,88 @@
+# Bash Cheat Sheet
+
+# Navigating the Filesystem
+
+pwd               # Print working directory
+ls                # List directory contents
+cd path/to/dir    # Change directory
+mkdir dir_name    # Make a new directory
+rmdir dir_name    # Remove a directory
+touch file_name   # Create a new file
+rm file_name      # Remove a file
+cp src dst        # Copy file from src to dst
+mv src dst        # Move/rename file from src to dst
+
+# File Permissions
+
+chmod xxx file    # Change the permission of file (xxx = permission code)
+chown user file   # Change file's owner to user
+chgrp group file  # Change file's group to group
+
+# Viewing and Manipulating Files
+
+cat file          # Display file's contents
+less file         # View file with pagination
+head file         # Display the first part of file
+tail file         # Display the last part of file
+grep pattern file # Search for pattern in file
+sed 's/find/replace/' file # Replace text in file
+awk '{print $1}' file     # Process and print specific fields in file
+
+# Environment Variables
+
+echo $VAR         # Display value of variable VAR
+export VAR=value  # Set environment variable VAR to value
+
+# Networking
+
+ping host         # Ping a host
+curl url          # Retrieve content from a URL
+wget url          # Download file from a URL
+ssh user@host     # Connect to host as user via SSH
+scp src user@host:dst # Copy file over SSH
+
+# System Information
+
+uname -a          # Display system information
+df                # Display disk space usage
+free              # Display free memory
+top               # Display running processes
+ps                # Display processes
+whoami            # Display current user
+
+# Redirection and Pipes
+
+command > file    # Redirect standard output to a file
+command < file    # Redirect standard input from a file
+command1 | command2 # Pipe output of command1 to command2
+
+# Command Chaining
+
+command1 && command2 # Run command2 if command1 is successful
+command1 || command2 # Run command2 if command1 is not successful
+command1 ; command2  # Run command1 and then command2
+
+# Scripting
+
+#!/bin/bash       # Shebang line to specify bash interpreter
+variable=value    # Declare a variable
+echo $variable    # Print the value of a variable
+if [ condition ]; then # If statement
+  # code
+fi
+for var in list; do # For loop
+  # code
+done
+while [ condition ]; do # While loop
+  # code
+done
+function name() { # Declare a function
+  # code
+}
+
+# Notes:
+# - Bash scripts have a .sh extension.
+# - Execute a script with `bash script.sh` or by making it executable with `chmod +x script.sh` and then `./script.sh`.
+# - Always consider script safety and security, especially when running with elevated privileges.
+
+# This is a basic overview of Bash commands and scripting. For more detailed information, consult the Bash manual or online resources.

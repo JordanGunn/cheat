@@ -1,0 +1,69 @@
+# sed Command Cheat Sheet
+
+# Basic Usage
+# Replace all occurrences of 'old' with 'new' in file.txt
+sed 's/old/new/' file.txt
+
+# In-place Editing
+# Edit files in place (replace the original file)
+sed -i 's/old/new/' file.txt
+
+# Global Replacement
+# Replace all occurrences in each line, not just the first
+sed 's/old/new/g' file.txt
+
+# Regular Expressions
+# Use regular expressions for pattern matching
+sed 's/old*/new/g' file.txt  # Replace 'old' followed by zero or more characters
+
+# Specific Line Numbers
+# Apply the command to specific lines
+sed '2s/old/new/' file.txt       # Only on second line
+sed '2,4s/old/new/' file.txt     # From second to fourth line
+sed '2,$s/old/new/' file.txt     # From second to last line
+
+# Delete Lines
+# Delete specific lines
+sed '2d' file.txt                # Delete second line
+sed '2,4d' file.txt              # Delete from second to fourth line
+
+# Append/Insert
+# Append or insert text before or after a line
+sed '3a\new text' file.txt       # Append 'new text' after line 3
+sed '3i\new text' file.txt       # Insert 'new text' before line 3
+
+# Multiple Commands
+# Execute multiple sed commands
+sed -e 's/old/new/' -e 's/test/check/' file.txt
+
+# Read from File
+# Read additional commands from a file
+sed -f commands.sed file.txt
+
+# Print Only Matching Lines
+# Print lines that match a pattern
+sed -n '/pattern/p' file.txt
+
+# Sub-commands
+# Use '&' to represent the matched string
+sed 's/pattern/& replacement/' file.txt
+
+# Back-references
+# Use back-references to reuse matched parts
+sed 's/\(pattern\)/\1 replacement/' file.txt
+
+# Replace Nth Occurrence
+# Replace the Nth occurrence of a pattern in a line
+sed 's/pattern/replacement/2' file.txt
+
+# Case Insensitive Matching
+# Ignore case during matching
+sed 's/pattern/replacement/I' file.txt
+
+# Notes:
+# - sed is a stream editor for filtering and transforming text.
+# - The 's' command is used for substitution, commonly used in sed.
+# - sed works by processing input line by line and applying the specified operations.
+# - Regular expressions in sed are a powerful way to match complex patterns.
+
+# This is a basic overview of the sed command. For more detailed information, consult the sed man page (man sed) or online resources.

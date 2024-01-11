@@ -1,0 +1,89 @@
+# Xarray Cheat Sheet
+
+# Import Xarray
+import xarray as xr
+
+# Basic Xarray Data Structures
+# Xarray has two fundamental data structures: DataArray and Dataset.
+
+# 1. DataArray - A multi-dimensional, labeled array.
+# Creating a DataArray
+data_array = xr.DataArray(data=[[10, 20, 30], [40, 50, 60]],
+                          dims=["x", "y"],
+                          coords={"x": [1, 2], "y": [3, 4, 5]},
+                          name="sample_data_array")
+
+# 2. Dataset - A dictionary-like collection of DataArrays.
+# Creating a Dataset
+dataset = xr.Dataset({"temperature": (["x", "y"], [[15, 20], [25, 30]]),
+                      "precipitation": (["x", "y"], [[2, 1], [0, 3]])},
+                     coords={"x": [10, 20],
+                             "y": [30, 40]})
+
+# Reading and Writing Data
+# Xarray can read and write data in a variety of formats.
+
+# Read a NetCDF file
+ds_from_netcdf = xr.open_dataset('path_to_file.nc')
+
+# Write to a NetCDF file
+ds.to_netcdf('path_to_new_file.nc')
+
+# Indexing and Selection
+# Xarray supports label-based indexing using .loc, .isel, and .sel methods.
+
+# Positional indexing by integer (like numpy)
+data_array.isel(x=0, y=1)
+
+# Label-based indexing
+data_array.sel(x=1, y=4)
+
+# Computation
+# Xarray supports a wide range of numpy-like aggregation methods.
+
+# Example: Calculate the mean
+data_array.mean(dim="x")
+
+# Example: Apply numpy universal functions
+import numpy as np
+np.sin(data_array)
+
+# Plotting
+# Xarray integrates with Matplotlib for plotting.
+
+import matplotlib.pyplot as plt
+
+data_array.plot()
+plt.show()
+
+# GroupBy
+# Xarray supports groupby operations similar to Pandas.
+
+# Group by one of the coordinates and calculate mean
+dataset.groupby("x").mean()
+
+# Resample and Rolling Operations
+# Resample for temporal data and perform rolling window computations.
+
+# Resample and aggregate
+ds_from_netcdf.resample(time="1D").mean()
+
+# Rolling mean
+ds_from_netcdf.rolling(time=3).mean()
+
+# Merging and Concatenating
+# Combine multiple datasets.
+
+# Concatenate datasets
+xr.concat([data_array1, data_array2], dim='x')
+
+# Merge datasets
+xr.merge([dataset1, dataset2])
+
+# Notes:
+# - Xarray is powerful for working with multi-dimensional labeled arrays.
+# - It provides pandas-like functionality for handling large datasets.
+# - Ideal for working with scientific datasets (especially in geosciences, meteorology, and physics).
+# - Supports Dask for parallel computing and large datasets.
+
+# For detailed documentation and advanced usage, refer to the official Xarray documentation.

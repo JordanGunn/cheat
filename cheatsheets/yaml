@@ -1,0 +1,93 @@
+# YAML Syntax Cheat Sheet
+
+# Basic Structure:
+# YAML uses indentation to represent the structure. Spaces are used (not tabs).
+
+# Key-Value Pairs:
+key: value
+
+# Strings:
+plain_string: Hello, World!
+string_with_spaces: "Hello, World!"
+single_quoted_string: 'Hello, World!'
+multi_line_string: |
+  Line 1
+  Line 2
+multi_line_folded_string: >
+  This text will be
+  folded into a single
+  line
+
+# Numbers:
+integer: 25
+floating_point: 25.5
+scientific_notation: 2.5e-4
+
+# Booleans:
+boolean_true: true
+boolean_false: false
+
+# Null:
+null_value: null
+null_value_shorthand: ~
+
+# Lists/Arrays:
+simple_list:
+  - item1
+  - item2
+  - item3
+
+# Inline List:
+inline_list: [item1, item2, item3]
+
+# Nested Lists:
+nested_list:
+  - - item1
+    - item2
+  - - item3
+    - item4
+
+# Dictionaries/Maps:
+dictionary:
+  key1: value1
+  key2: value2
+
+# Nested Dictionaries:
+nested_dictionary:
+  parent_key:
+    child_key1: child_value1
+    child_key2: child_value2
+
+# Mixed Content:
+mixed_content:
+  - key1: value1
+  - key2:
+    - list_item1
+    - list_item2
+
+# Comments:
+# This is a comment in YAML.
+
+# Complex Structures:
+complex_structure:
+  - id: 1
+    name: Name 1
+    active: true
+  - id: 2
+    name: Name 2
+    active: false
+
+# Anchors and Aliases:
+# Define an anchor (&) and use it later (*)
+anchor_example:
+  base: &base
+    name: BaseName
+  derived:
+    <<: *base
+    additional_property: value
+
+# Notes:
+# - Indentation is crucial in YAML and should be consistent.
+# - Avoid tabs; use spaces for indentation.
+# - YAML is case-sensitive.
+# - When in doubt, quote your strings, especially if they contain special characters.

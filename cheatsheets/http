@@ -1,0 +1,75 @@
+# HTTP Cheat Sheet
+
+# HTTP Methods
+GET     - Retrieve data from a specified resource.
+POST    - Submit data to be processed to a specified resource.
+PUT     - Update a specified resource with provided data.
+DELETE  - Remove the specified resource.
+HEAD    - Same as GET but returns only HTTP headers and no document body.
+PATCH   - Update partial resources.
+OPTIONS - Returns the supported HTTP methods.
+
+# HTTP Status Codes
+1xx: Informational
+    100 Continue
+    101 Switching Protocols
+
+2xx: Success
+    200 OK
+    201 Created
+    202 Accepted
+    204 No Content
+
+3xx: Redirection
+    301 Moved Permanently
+    302 Found
+    304 Not Modified
+
+4xx: Client Error
+    400 Bad Request
+    401 Unauthorized
+    403 Forbidden
+    404 Not Found
+    405 Method Not Allowed
+
+5xx: Server Error
+    500 Internal Server Error
+    501 Not Implemented
+    503 Service Unavailable
+
+# HTTP Headers
+General Headers
+    Cache-Control, Date, Connection
+
+Request Headers
+    Host, User-Agent, Accept, Accept-Language, Accept-Encoding, Authorization, Cookie
+
+Response Headers
+    Server, Set-Cookie, ETag, Content-Type, Content-Length, Last-Modified
+
+Entity Headers
+    Allow, Content-Encoding, Expires, Last-Modified
+
+# HTTPS
+- HTTPS is HTTP with encryption.
+- The main difference between HTTP and HTTPS is that HTTPS uses TLS (SSL) to encrypt normal HTTP requests and responses.
+
+# RESTful Web Services
+- RESTful web services use HTTP methods explicitly.
+- Utilizes CRUD (Create, Read, Update, Delete) operations.
+- Stateless: Each HTTP request happens in complete isolation.
+
+# HTTP/2
+- The second major version of the HTTP network protocol.
+- Focuses on performance; specifically, end-user perceived latency, network and server resource usage.
+- Introduces server push and multiplexing.
+
+# HTTP/3
+- The upcoming third major version of the HTTP protocol.
+- Based on QUIC, which is a transport layer network protocol developed initially by Google.
+
+# Notes:
+- HTTP is a stateless protocol, meaning that each request from a client to server is treated as an independent transaction.
+- Familiarity with HTTP methods and status codes is crucial for web development and API integration.
+
+# For more detailed information, refer to the official HTTP documentation and RFC 7231.

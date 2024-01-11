@@ -1,0 +1,58 @@
+# Markdown Syntax Cheat Sheet
+
+# Headings
+# Use '#' for headings. More '#'s mean smaller heading sizes.
+
+# H1 Heading
+## H2 Heading
+### H3 Heading
+#### H4 Heading
+##### H5 Heading
+###### H6 Heading
+
+# Emphasis
+# Use asterisks (*) or underscores (_) for emphasis (italic and bold).
+
+*Italic* or _Italic_
+**Bold** or __Bold__
+***Bold Italic*** or ___Bold Italic___
+
+# Lists
+# Use '-' or '*' for unordered lists, numbers for ordered lists.
+
+- Unordered list item 1
+- Unordered list item 2
+  - Subitem 1
+  - Subitem 2
+
+1. Ordered list item 1
+2. Ordered list item 2
+   1. Subitem 1
+   2. Subitem 2
+
+# Links
+# Use brackets for the link text and parentheses for the URL.
+
+[Link text](URL)
+
+# Images
+# Similar to links, but start with an exclamation mark.
+
+![Alt text](Image URL)
+
+# Blockquotes
+# Use '>' for block quotes.
+
+> This is a blockquote.
+
+# Code
+# Use backticks (`) for inline code and triple backticks for code blocks.
+
+Inline `code` here.
+
+# Fenced Code Blocks
+# Use triple backticks and specify the language (optional).
+
+```python
+# Python code here
+print("Hello, Markdown")

@@ -1,0 +1,113 @@
+# Docker CLI Cheat Sheet
+
+# =====================
+# Basic Docker Commands
+# =====================
+
+# 1. Pull an image from a registry
+docker pull [OPTIONS] IMAGE[:TAG|@DIGEST]
+
+  # Example: Pull the latest Ubuntu image
+  docker pull ubuntu:latest
+
+# 2. Run a container
+docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+
+  # Example: Run an interactive shell in Ubuntu
+  docker run -it ubuntu /bin/bash
+
+# 3. List running containers
+docker ps [OPTIONS]
+
+# 4. List all containers (running and stopped)
+docker ps -a
+
+# 5. Stop a running container
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+
+  # Example: Stop a container
+  docker stop my_container
+
+# 6. Remove a container
+docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+  # Example: Remove a stopped container
+  docker rm my_container
+
+# 7. List Docker images
+docker images [OPTIONS] [REPOSITORY[:TAG]]
+
+# 8. Remove an image
+docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+  # Example: Remove an Ubuntu image
+  docker rmi ubuntu
+
+
+# ==========================
+# Docker Networking Commands
+# ==========================
+
+# 9. List networks
+docker network ls
+
+# 10. Create a network
+docker network create [OPTIONS] NETWORK
+
+# Example: Create a network
+docker network create my_network
+
+# 11. Remove a network
+docker network rm NETWORK
+
+
+# ======================
+# Docker Volume Commands
+# ======================
+
+# 12. List volumes
+docker volume ls
+
+# 13. Create a volume
+docker volume create [OPTIONS] [VOLUME]
+
+# Example: Create a volume
+docker volume create my_volume
+
+# 14. Remove a volume
+docker volume rm VOLUME
+
+
+# ========================
+# Advanced Docker Commands
+# ========================
+
+# 15. Build an image from a Dockerfile
+docker build [OPTIONS] PATH | URL | -
+
+  # Example: Build an image using Dockerfile in the current directory
+  docker build -t my_image .
+
+# 16. Push an image to a registry
+docker push [OPTIONS] NAME[:TAG]
+
+  # Example: Push an image to Docker Hub
+  docker push my_username/my_image:latest
+
+# 17. Execute a command in a running container
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+  # Example: Execute an interactive bash shell inside a running container
+  docker exec -it my_container /bin/bash
+
+# 18. View logs of a container
+docker logs [OPTIONS] CONTAINER
+
+# 19. Inspect an object (container, image, volume, network)
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+
+  # Example: Inspect a container
+  docker inspect my_container
+
+# Note: This cheat sheet provides basic and commonly used Docker commands. 
+# For a full list of commands and options, refer to the official Docker documentation.

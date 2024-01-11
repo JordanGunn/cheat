@@ -1,0 +1,85 @@
+# grep Command Cheat Sheet
+
+# Basic grep Usage
+# Search for a pattern within a file
+grep 'pattern' filename
+
+# Case Insensitive Search
+# Ignore case distinctions in both the pattern and the input files
+grep -i 'pattern' filename
+
+# Recursive Search
+# Recursively search for a pattern in all files under the specified directory
+grep -r 'pattern' directory_path
+
+# Search with Line Numbers
+# Print the line number for each matched line
+grep -n 'pattern' filename
+
+# Search for Whole Words
+# Only match lines containing matches that form whole words
+grep -w 'pattern' filename
+
+# Invert Match
+# Invert the sense of matching, to select non-matching lines
+grep -v 'pattern' filename
+
+# Match Count
+# Print only a count of matching lines for each input file
+grep -c 'pattern' filename
+
+# Show Lines Before/After/Context
+# -B: Show num lines before the match
+# -A: Show num lines after the match
+# -C: Show num lines before and after the match
+grep -B num 'pattern' filename
+grep -A num 'pattern' filename
+grep -C num 'pattern' filename
+
+# Regular Expressions
+# Use regular expressions for pattern matching
+
+# ^: Matches the start of the line
+grep '^pattern' filename
+
+# $: Matches the end of the line
+grep 'pattern$' filename
+
+# .: Matches any single character
+grep 'p.tt.rn' filename
+
+# *: Matches zero or more occurrences of the previous character
+grep 'pat*ern' filename
+
+# []: Matches any one of the enclosed characters
+grep 'patt[aeiou]rn' filename
+
+# {}: Matches a specified number of occurrences of the previous character
+grep 'pat{2}ern' filename
+
+# Extended Regular Expressions
+# Use extended regular expressions (ERE)
+grep -E 'pat+ern' filename
+
+# OR Operator
+# Match lines containing either of the patterns
+grep 'pattern1\|pattern2' filename
+# or using ERE
+grep -E 'pattern1|pattern2' filename
+
+# Grouping
+# Group parts of the pattern
+grep -E '(pattern1|pattern2)pattern3' filename
+
+# Escape Special Characters
+# Use a backslash to escape special characters
+grep 'pattern\*' filename
+
+# Notes:
+# - grep is case sensitive by default.
+# - Regular expressions in grep are powerful for complex pattern matching.
+# - Use single quotes around the pattern to avoid shell interpretation.
+# - grep can be combined with other commands using pipes for more complex searches.
+
+# This is a basic overview of the grep command. For more detailed information, consult the grep man page (man grep).
+

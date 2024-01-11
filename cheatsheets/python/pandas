@@ -1,0 +1,96 @@
+# Pandas Cheat Sheet
+
+# Import Pandas
+import pandas as pd
+
+# Basic Data Structures
+# Pandas primarily uses two data structures: Series and DataFrame.
+
+# Series: 1D array-like object
+s = pd.Series([1, 3, 5, np.nan, 6, 8])
+
+# DataFrame: 2D labeled data structure
+df = pd.DataFrame({'A': [1, 2, 3, 4],
+                   'B': pd.Timestamp('20230101'),
+                   'C': pd.Series(1, index=list(range(4)), dtype='float32'),
+                   'D': np.array([3] * 4, dtype='int32'),
+                   'E': pd.Categorical(["test", "train", "test", "train"]),
+                   'F': 'foo'})
+
+# Reading Data
+# Read data from various file formats into DataFrame.
+
+df_csv = pd.read_csv('filename.csv')     # Read from CSV file
+df_excel = pd.read_excel('filename.xlsx') # Read from Excel file
+df_json = pd.read_json('filename.json')   # Read from JSON file
+
+# Writing Data
+# Write data to various file formats.
+
+df.to_csv('filename.csv')      # Write to CSV file
+df.to_excel('filename.xlsx')   # Write to Excel file
+df.to_json('filename.json')    # Write to JSON file
+
+# Viewing Data
+df.head()    # View first few rows
+df.tail(3)   # View last 3 rows
+df.index     # View index
+df.columns   # View column names
+df.describe() # Generate descriptive statistics
+
+# Selection
+# Selecting a single column or multiple columns.
+
+df['A']                # Select column A
+df[['A', 'B']]         # Select multiple columns
+
+# Slicing Rows
+df[0:3]                # Slice rows
+
+# Selection by Label
+df.loc[:, ['A', 'B']]  # Select columns A and B
+
+# Selection by Position
+df.iloc[3]             # Select the 4th row
+
+# Boolean Indexing
+df[df['A'] > 0]        # Rows where A > 0
+
+# Setting
+df.at[0, 'A'] = 0      # Set value by label
+df.iat[0, 1] = 0       # Set value by position
+
+# Handling Missing Data
+df.dropna()            # Drop rows with missing data
+df.fillna(value=5)     # Fill missing data
+
+# Operations
+df.mean()              # Mean of each column
+df.apply(np.cumsum)    # Cumulative sum
+
+# Merging
+pd.concat([df1, df2])  # Concatenate DataFrames
+pd.merge(df1, df2)     # Merge DataFrames
+
+# Grouping
+df.groupby('E').sum()  # Group by column E and sum
+
+# Reshaping
+df.stack()             # Pivot a level of the column labels
+df.unstack()           # Pivot a level of the row labels
+
+# Time Series
+pd.date_range('20230101', periods=6) # Create a date range
+
+# Categoricals
+df['E'].astype('category') # Convert column to categorical
+
+# Plotting
+df.plot()               # Plotting
+
+# Notes:
+# - Pandas is designed to work with rectangular data (like SQL tables or Excel spreadsheets).
+# - It offers powerful tools for data manipulation, cleaning, analysis, and visualization.
+# - Pandas works well with many other data analysis libraries, like NumPy and Matplotlib.
+
+# For more detailed documentation and advanced usage, refer to the official Pandas documentation.

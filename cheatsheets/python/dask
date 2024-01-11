@@ -1,0 +1,74 @@
+# Dask Cheat Sheet
+
+# Import Dask
+import dask
+
+# Dask Data Structures
+# Dask provides multi-core and distributed parallel execution on larger-than-memory datasets.
+
+# 1. Dask DataFrame - Similar to Pandas DataFrame, but for larger-than-memory computations.
+import dask.dataframe as dd
+dask_df = dd.read_csv('large-dataset.csv')
+
+# 2. Dask Array - Similar to NumPy Array, but for larger-than-memory computations.
+import dask.array as da
+dask_array = da.from_array(large_numpy_array, chunks=(1000, 1000))
+
+# 3. Dask Bag - Parallel list-like collection for semi-structured data.
+import dask.bag as db
+dask_bag = db.read_text('data/*.json').map(json.loads)
+
+# Basic Operations
+# Dask operations are lazy; they build up a task graph that gets executed at compute time.
+
+# Example: DataFrame operation
+result = dask_df.groupby('column').column2.mean()
+
+# Compute a result - this triggers actual computation
+computed_result = result.compute()
+
+# Parallelize Python Functions
+# Use Dask delayed to parallelize your own Python functions.
+
+from dask import delayed
+
+@delayed
+def inc(x):
+    return x + 1
+
+@delayed
+def add(x, y):
+    return x + y
+
+# Using delayed functions
+a = inc(15)
+b = inc(17)
+c = add(a, b)
+final_result = c.compute()
+
+# Schedulers
+# Dask has several schedulers suitable for different types of workloads.
+
+# 1. Threaded scheduler for Dask DataFrames and Dask Arrays (default for these types)
+computed_result = result.compute(scheduler='threads')
+
+# 2. Multiprocessing scheduler for parallelizing across multiple cores
+computed_result = result.compute(scheduler='processes')
+
+# 3. Distributed scheduler for distributed computing across multiple machines
+from dask.distributed import Client
+client = Client()
+computed_result = result.compute(scheduler='distributed')
+
+# Visualization
+# Visualize the task graph to understand computation.
+
+result.visualize(filename='task-graph.svg')
+
+# Notes:
+# - Dask is highly scalable and efficient for parallel computing tasks.
+# - It integrates well with existing Python libraries like Pandas, NumPy, and Scikit-Learn.
+# - Dask is suitable for a variety of tasks including data processing, machine learning, and more.
+# - Dask's lazy evaluation model helps in optimizing the computation.
+
+# For more information and advanced usage, refer to the official Dask documentation.

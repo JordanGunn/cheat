@@ -1,0 +1,92 @@
+# Expanded Git Cheat Sheet
+
+# Configuring Git
+git config --global user.name "Your Name"  # Set your name
+git config --global user.email "your_email@example.com"  # Set your email
+
+# Initialize a New Git Repository
+git init  # Initialize a local Git repository
+
+# Cloning a Repository
+git clone <repository_url>  # Clone a remote repository to your local machine
+
+# Checking File Status
+git status  # Check the status of changes
+
+# Tracking Files
+git add <filename>  # Add a file to the staging area
+git add .  # Add all new and changed files to the staging area
+
+# Committing Changes
+git commit -m "Commit message"  # Commit changes with a message
+
+# Viewing the Commit History
+git log  # View the commit history
+git log --oneline  # Compact view of commit history
+git log --graph --all --decorate  # Graphical view of commit history
+
+# Branching
+git branch  # List branches
+git branch <branch_name>  # Create a new branch
+git checkout <branch_name>  # Switch to a different branch
+git checkout -b <branch_name>  # Create and switch to a new branch
+
+# Merging
+git merge <branch_name>  # Merge a branch into the current branch
+
+# Handling Remotes
+git remote  # List remote repositories
+git remote -v  # List remote repositories with URLs
+git remote add <remote_name> <remote_url>  # Add a new remote repository
+git remote remove <remote_name>  # Remove a remote repository
+
+# Fetching and Pulling from Remote
+git fetch  # Fetch changes from the remote repository
+git pull  # Fetch and merge changes from the remote repository
+
+# Pushing to Remote
+git push  # Push local repository to the remote repository
+git push origin <branch_name>  # Push a specific branch to remote
+git push --set-upstream origin <branch_name>  # Set a new upstream branch on remote
+
+# Stashing
+git stash  # Stash changes in a dirty working directory
+git stash pop  # Apply stashed changes
+git stash list  # List all stashed changes
+
+# Resolving Merge Conflicts
+# Edit the files to resolve conflicts, then:
+git add <file>  # Mark file as resolved
+git commit  # Commit the resolved changes
+
+# Undoing Changes
+git checkout -- <file>  # Revert changes to a file
+git revert <commit>  # Revert a commit
+git reset --hard <commit>  # Reset the HEAD to a specific commit
+
+# Ignoring Files
+# Add file patterns to a .gitignore file in your repository
+
+# Aliases
+git config --global alias.<alias_name> '<git_command>'  # Create a shortcut for a Git command
+
+# Viewing Differences
+git diff  # Show changes between commits, commit and working tree, etc.
+git diff --staged  # Show changes staged for commit
+
+# Tagging
+git tag  # List tags
+git tag <tag_name> <commit>  # Create a tag at a specific commit
+
+# Cherry Picking
+git cherry-pick <commit>  # Apply changes from a specific commit
+
+# Rebasing
+git rebase <base>  # Reapply commits on top of another base tip
+
+# Notes:
+# - Regularly push your commits to the remote repository to avoid data loss.
+# - Use branching to manage different features or versions.
+# - Regularly fetch and pull updates from the remote repository to stay up-to-date.
+
+# This cheat sheet covers basic and some advanced Git commands. For more detailed information, refer to the Git documentation.
