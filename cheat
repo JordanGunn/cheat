@@ -2,40 +2,55 @@
 
 # Custom cheat command script
 
-CHEAT_DIR="$HOME/.cheat"
+CHEAT_DIR="$HOME/cheat"
 
 # Function to list all cheat sheets
 list_cheats() {
     find "$CHEAT_DIR" -type f -or -type l | sed "s|$CHEAT_DIR/||"
 }
 
+# Function to search cheat sheets
+search_cheats() {
+    grep -Ril "$1" "$CHEAT_DIR"
+}
+
 # Check if arguments are provided
 if [[ $# -eq 0 ]]; then
-    echo "Usage: cheat [category] cheat_sheet_name"
-    echo "       cheat -l or cheat --list to list all cheat sheets"
+    echo "Usage: cheat [option] [argument]"
+    echo "Options:"
+    echo "  -l, --list     List all cheat sheets"
+    echo "  -s, --search   Search cheat sheets for a specified term"
     exit 1
 fi
 
-# Handle list option
-if [[ $1 == "-l" ]] || [[ $1 == "--list" ]]; then
-    list_cheats
-    exit 0
-fi
+# Handle options
+case "$1" in
+    -l|--list)
+        list_cheats
+        ;;
+    -s|--search)
+        if [[ -n "$2" ]]; then
+            search_cheats "$2"
+        else
+            echo "Usage: cheat -s [search_term]"
+        fi
+        ;;
+    *)
+        # Construct the file path
+        FILE_PATH="$CHEAT_DIR/$1"
+        if [[ $# -eq 2 ]]; then
+            FILE_PATH="$FILE_PATH/$2"
+        elif [[ -d "$CHEAT_DIR/$1" && -f "$CHEAT_DIR/$1/$1" ]]; then
+            FILE_PATH="$CHEAT_DIR/$1/$1"
+        fi
 
-# Construct the file path
-FILE_PATH="$CHEAT_DIR/$1"
-if [[ $# -eq 2 ]]; then
-    FILE_PATH="$FILE_PATH/$2"
-elif [[ -d "$CHEAT_DIR/$1" && -f "$CHEAT_DIR/$1/$1" ]]; then
-    # Check if there's a file with the same name inside a directory of the same name
-    FILE_PATH="$CHEAT_DIR/$1/$1"
-fi
+        # Check if the file exists and is not a directory
+        if [[ -f "$FILE_PATH" ]]; then
+            cat "$FILE_PATH"
+        else
+            echo "Cheat sheet not found: $FILE_PATH"
+            exit 1
+        fi
+        ;;
+esac
 
-# Check if the file exists and is not a directory
-if [[ -f "$FILE_PATH" ]]; then
-    cat "$FILE_PATH"
-else
-    echo "Cheat sheet not found: $FILE_PATH"
-    echo "cheat command may be missing arguments..."
-    exit 1
-fi
