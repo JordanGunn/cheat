@@ -5,7 +5,7 @@ export ZSHRC="$HOME/.zshrc"
 export BASHRC="$HOME/.bashrc"
 
 # get the name of the current script
-export SCRIPTNAME = $(basename "$0")
+export SCRIPTNAME=$(basename "$0")
 
 # copy the cheatsheets into the dir
 mkdir -p ${CHEATDIR}
