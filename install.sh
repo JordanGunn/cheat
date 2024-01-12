@@ -9,19 +9,13 @@ export SCRIPTNAME=$(basename "$0")
 
 # copy the cheatsheets into the dir
 mkdir -p ${CHEATDIR}
-cp -r cheatsheets/* ${CHEATDIR}/
+cp -rf cheatsheets/* ${CHEATDIR}/
 
 # copy the cheat script
 mkdir -p ${SCRIPTDIR}
-cp ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
+cp -f ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
 
 if [ "$SCRIPTNAME" = "install.sh" ]; then
-
-    # make the dir for cheatsheets
-    mkdir -p ${SCRIPTDIR}
-
-    # copy the cheat script
-    cp ./cheat ${SCRIPTDIR} && chmod a+x ${SCRIPTDIR}/cheat
 
     # Add path to cheat
     PATHNEW="export PATH=${SCRIPTDIR}:${PATH}"
